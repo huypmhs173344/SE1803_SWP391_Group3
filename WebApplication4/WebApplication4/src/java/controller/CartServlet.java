@@ -70,6 +70,11 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("acc");
         listCart = db.getCart(u.getId());
+        int subtotal = 0;
+        for (Cart cart : listCart) {
+            subtotal = subtotal +cart.gettotal();
+        }
+        request.setAttribute("subtotal", subtotal);
         request.setAttribute("cart", listCart);
         request.getRequestDispatcher("cart.jsp").forward(request, response);
     }

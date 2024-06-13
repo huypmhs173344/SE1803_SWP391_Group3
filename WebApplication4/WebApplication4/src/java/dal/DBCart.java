@@ -105,7 +105,7 @@ public class DBCart extends DBContext {
             System.out.println(cart.gettotal());
         }
         db.moreQuantity(8, 5);
-db.AddToCart(8,5 );
+db.AddToCart(8,7 );
     }
 
 }
