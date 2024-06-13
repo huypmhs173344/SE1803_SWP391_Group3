@@ -66,7 +66,7 @@ public class CheckOut extends HttpServlet {
         List<Cart> listCart = new ArrayList<>();
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("acc");        
-        listCart = db.getCart(8);
+        listCart = db.getCart(u.getId());
         request.setAttribute("cart", listCart);
         request.getRequestDispatcher("checkout.jsp").forward(request, response);
     }

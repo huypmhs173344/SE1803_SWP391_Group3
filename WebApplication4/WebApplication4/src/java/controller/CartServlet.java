@@ -21,7 +21,6 @@ import model.Categories;
 import model.Product;
 import model.User;
 
-
 /**
  *
  * @author nitro5
@@ -45,7 +44,7 @@ public class CartServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CartServlet</title>");            
+            out.println("<title>Servlet CartServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet CartServlet at " + request.getContextPath() + "</h1>");
@@ -68,10 +67,10 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         DBCart db = new DBCart();
         List<Cart> listCart = new ArrayList<>();
-       // HttpSession session = request.getSession();
-       //User u = (User) session.getAttribute("acc");        
-        listCart = db.getCart(8);
-        request.setAttribute("cart", listCart);      
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("acc");
+        listCart = db.getCart(u.getId());
+        request.setAttribute("cart", listCart);
         request.getRequestDispatcher("cart.jsp").forward(request, response);
     }
 

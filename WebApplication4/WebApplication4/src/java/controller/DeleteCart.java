@@ -62,7 +62,7 @@ public class DeleteCart extends HttpServlet {
         DBCart db = new DBCart();
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("acc");        
-        db.deleteCart(8, Integer.parseInt(request.getParameter("product_id")));
+        db.deleteCart(u.getId(), Integer.parseInt(request.getParameter("product_id")));
         response.sendRedirect("cart");
     }
 

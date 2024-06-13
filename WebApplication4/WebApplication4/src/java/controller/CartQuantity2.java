@@ -63,10 +63,10 @@ public class CartQuantity2 extends HttpServlet {
         User u = (User) session.getAttribute("acc");
         
         if(Integer.parseInt(request.getParameter("quan")) == 0){
-        db.deleteCart(8, Integer.parseInt(request.getParameter("id")));
+        db.deleteCart(u.getId(), Integer.parseInt(request.getParameter("id")));
         response.sendRedirect("cart");
         }else{
-        db.lessQuantity(8, Integer.parseInt(request.getParameter("id")));
+        db.lessQuantity(u.getId(), Integer.parseInt(request.getParameter("id")));
         response.sendRedirect("cart");
         }
     }
