@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/SWP391/tess4/web/tab.html</file>
+            <file>file:/D:/SWP391/tess4/src/java/dal/OrderDAO.java</file>
+            <file>file:/D:/SWP391/tess4/web/inbox.html</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/UserServlet.java</file>
+            <file>file:/D:/SWP391/tess4/web/badge.html</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/SignupSeverlet.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/model/Product.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/dal/DBContext.java</file>
+            <file>file:/D:/SWP391/tess4/web/table.jsp</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/LoginSeverlet.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/HomeSeverlet.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/model/Categories.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/dal/UserDAO.java</file>
+            <file>file:/D:/SWP391/tess4/web/WEB-INF/web.xml</file>
+            <file>file:/D:/SWP391/tess4/src/java/model/Order.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/model/User.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/OrdersSeverlet.java</file>
+            <file>file:/D:/SWP391/tess4/web/index.html</file>
+        </group>
+    </open-files>
+</project-private>
