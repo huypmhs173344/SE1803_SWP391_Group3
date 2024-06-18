@@ -66,7 +66,7 @@ public class AccountManagerServlet extends HttpServlet {
             case "update" -> {
                 User user = db.getUserById(idAcc);
                 request.setAttribute("u", user);
-                request.getRequestDispatcher("UpdateAccount.jsp").forward(request, response);
+                request.getRequestDispatcher("viewAdmin/UpdateAccount.jsp").forward(request, response);
             }
             case "delete" -> {
                 db.deleteAnAccountById(idAcc);
@@ -75,7 +75,7 @@ public class AccountManagerServlet extends HttpServlet {
             default -> {
                 List<User> list = db.getAllUser();
                 request.setAttribute("listA", list);
-                request.getRequestDispatcher("listAccount.jsp").forward(request, response);
+                request.getRequestDispatcher("viewAdmin/ListAccount.jsp").forward(request, response);
             }
         }
     }

@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/src/java/dal/DBContext.java</file>
-            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/src/java/controller/AccountManagerServlet.java</file>
-            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/src/java/model/User.java</file>
-            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/web/UpdateAccount.jsp</file>
-            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/src/java/controller/HomeSeverlet.java</file>
-            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/src/java/controller/LoginSeverlet.java</file>
-            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/web/listAccount.jsp</file>
+            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/web/viewAdmin/Navbar.jsp</file>
+            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/web/profile.jsp</file>
         </group>
     </open-files>
 </project-private>

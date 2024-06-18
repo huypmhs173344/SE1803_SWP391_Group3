@@ -26,10 +26,10 @@
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-         <!--Customized Bootstrap Stylesheet--> 
+        <!--Customized Bootstrap Stylesheet--> 
         <link href="css/bootstrap_ver1.min.css" rel="stylesheet">
 
-         <!--Template Stylesheet--> 
+        <!--Template Stylesheet--> 
         <link href="css/style_ver1.css" rel="stylesheet">
     </head>
     <body>
@@ -127,7 +127,6 @@
                                         <label for="inputEmail" class="form-label">Email</label>
                                         <input type="email" class="form-control" id="inputEmail" name="mail" value="${u.mail}"
                                                placeholder="Example: abc@gmail.com" oninput="validateEmail()" readonly="">
-                                        <span id="check_email_alert"></span>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <label for="inputAddress" class="form-label">Address</label>
@@ -229,6 +228,7 @@
                                                         temp.type = "password";
                                                     }
                                                 }
+                                                
                                                 function validatePhone() {
                                                     let inputNum = document.getElementById("inputPhone");
                                                     var phonePartern = /^\d{10}$/;
@@ -240,8 +240,18 @@
                                                         document.getElementById("updateProflie").style.opacity = 0.3;
                                                     }
                                                 }
-                                                function validateEmail() {
-
+                                                
+                                                function phonenumber(inputtxt)
+                                                {
+                                                    var phoneno = /^\d{10}$/;
+                                                    if ((inputtxt.value.match(phoneno))
+                                                    {
+                                                        return true;
+                                                    } else
+                                                    {
+                                                        alert("message");
+                                                        return false;
+                                                    }
                                                 }
         </script>
     </body>
