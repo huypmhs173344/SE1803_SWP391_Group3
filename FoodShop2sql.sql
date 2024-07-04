@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [FoodShop2]    Script Date: 7/4/2024 4:18:46 PM ******/
+/****** Object:  Database [FoodShop2]    Script Date: 7/4/2024 4:28:58 PM ******/
 CREATE DATABASE [FoodShop2]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -84,7 +84,7 @@ ALTER DATABASE [FoodShop2] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP
 GO
 USE [FoodShop2]
 GO
-/****** Object:  Table [dbo].[Cart]    Script Date: 7/4/2024 4:18:46 PM ******/
+/****** Object:  Table [dbo].[Cart]    Script Date: 7/4/2024 4:28:58 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -95,7 +95,7 @@ CREATE TABLE [dbo].[Cart](
 	[quantity] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 7/4/2024 4:18:46 PM ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 7/4/2024 4:28:58 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +109,7 @@ CREATE TABLE [dbo].[Categories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Feedback]    Script Date: 7/4/2024 4:18:46 PM ******/
+/****** Object:  Table [dbo].[Feedback]    Script Date: 7/4/2024 4:28:58 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -119,14 +119,14 @@ CREATE TABLE [dbo].[Feedback](
 	[user_id] [int] NULL,
 	[product_id] [int] NULL,
 	[description] [nvarchar](max) NULL,
-	[feedback_date] [date] NULL,
+	[feedback_date] [datetime] NULL,
  CONSTRAINT [PK_Feedback] PRIMARY KEY CLUSTERED 
 (
 	[feedback_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OrderDetails]    Script Date: 7/4/2024 4:18:46 PM ******/
+/****** Object:  Table [dbo].[OrderDetails]    Script Date: 7/4/2024 4:28:58 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,7 +143,7 @@ CREATE TABLE [dbo].[OrderDetails](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 7/4/2024 4:18:46 PM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 7/4/2024 4:28:58 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +153,7 @@ CREATE TABLE [dbo].[Orders](
 	[user_id] [int] NULL,
 	[total_money] [int] NULL,
 	[status] [int] NULL,
-	[date] [date] NULL,
+	[date] [datetime] NULL,
 	[note] [nvarchar](max) NULL,
 	[isPay] [int] NULL,
  CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
@@ -162,7 +162,7 @@ CREATE TABLE [dbo].[Orders](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Products]    Script Date: 7/4/2024 4:18:46 PM ******/
+/****** Object:  Table [dbo].[Products]    Script Date: 7/4/2024 4:28:58 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -182,7 +182,7 @@ CREATE TABLE [dbo].[Products](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Shipping]    Script Date: 7/4/2024 4:18:46 PM ******/
+/****** Object:  Table [dbo].[Shipping]    Script Date: 7/4/2024 4:28:58 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -199,7 +199,7 @@ CREATE TABLE [dbo].[Shipping](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 7/4/2024 4:18:46 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 7/4/2024 4:28:58 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -244,101 +244,101 @@ INSERT [dbo].[Categories] ([category_id], [category_name]) VALUES (7, N'Hot Dog'
 GO
 INSERT [dbo].[Categories] ([category_id], [category_name]) VALUES (8, N'French Fries')
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (1, 8, 1, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (1, 8, 1, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (2, 8, 2, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (2, 8, 2, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (3, 8, 3, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (3, 8, 3, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (4, 8, 4, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (4, 8, 4, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (5, 8, 5, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (5, 8, 5, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (6, 8, 6, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (6, 8, 6, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (7, 8, 7, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (7, 8, 7, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (8, 8, 8, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (8, 8, 8, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (9, 8, 9, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (9, 8, 9, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (10, 8, 10, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (10, 8, 10, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (11, 8, 11, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (11, 8, 11, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (12, 8, 12, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (12, 8, 12, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (13, 8, 13, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (13, 8, 13, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (14, 8, 14, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (14, 8, 14, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (15, 8, 15, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (15, 8, 15, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (16, 8, 16, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (16, 8, 16, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (17, 8, 17, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (17, 8, 17, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (18, 8, 18, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (18, 8, 18, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (19, 8, 19, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (19, 8, 19, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (20, 8, 20, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (20, 8, 20, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (21, 8, 21, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (21, 8, 21, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (22, 8, 22, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (22, 8, 22, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (23, 8, 23, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (23, 8, 23, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (24, 8, 24, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (24, 8, 24, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (25, 8, 25, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (25, 8, 25, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (26, 8, 26, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (26, 8, 26, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (27, 8, 27, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (27, 8, 27, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (28, 8, 28, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (28, 8, 28, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (29, 8, 29, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (29, 8, 29, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (30, 8, 30, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (30, 8, 30, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (31, 8, 31, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (31, 8, 31, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (32, 8, 32, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (32, 8, 32, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (33, 8, 33, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (33, 8, 33, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (34, 8, 34, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (34, 8, 34, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (35, 8, 35, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (35, 8, 35, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (36, 8, 36, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (36, 8, 36, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (37, 8, 37, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (37, 8, 37, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (38, 8, 38, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (38, 8, 38, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (39, 8, 39, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (39, 8, 39, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (40, 8, 40, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (40, 8, 40, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (41, 8, 41, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (41, 8, 41, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (42, 8, 42, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (42, 8, 42, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (43, 8, 43, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (43, 8, 43, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (44, 8, 44, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (44, 8, 44, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (45, 8, 45, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (45, 8, 45, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (46, 8, 46, N'the food is delicious', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (46, 8, 46, N'the food is delicious', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (47, 8, 1, N'Super quality products', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (47, 8, 1, N'Super quality products', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
-INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (48, 8, 1, N'Super quality products', CAST(N'2024-06-17' AS Date))
+INSERT [dbo].[Feedback] ([feedback_id], [user_id], [product_id], [description], [feedback_date]) VALUES (48, 8, 1, N'Super quality products', CAST(N'2024-06-17T00:00:00.000' AS DateTime))
 GO
 INSERT [dbo].[Orders] ([order_id], [user_id], [total_money], [status], [date], [note], [isPay]) VALUES (1, 8, 1000, 0, NULL, N'okkk', 0)
 GO
