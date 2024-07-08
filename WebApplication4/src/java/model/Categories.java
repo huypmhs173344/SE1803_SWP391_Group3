@@ -1,15 +1,10 @@
-
-
-
-
 package model;
-
-
 
 import java.util.*;
 import java.lang.*;
 
 public class Categories {
+
     int cid;
     String cname;
 
@@ -36,5 +31,5 @@ public class Categories {
     public void setCname(String cname) {
         this.cname = cname;
     }
-    
+
 }

@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label for="cid">Category ID</label>
                     <select name="category" class="form-control">
-                        <c:forEach items="${listC}" var="cate">
+                        <c:forEach items="${categories}" var="cate">
                             <option value="${cate.cid}" ${product.cid ==cate.cid ? "selected" : ""}>${cate.cname}</option>
                         </c:forEach>
                     </select>

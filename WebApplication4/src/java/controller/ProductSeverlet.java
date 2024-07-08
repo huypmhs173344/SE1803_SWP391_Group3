@@ -134,7 +134,7 @@ public class ProductSeverlet extends HttpServlet {
             ProductDAO productDao = new ProductDAO();
             Product product = productDao.getProductByID(idProduct);
             DBHomeContext dbh = new DBHomeContext();
-            request.setAttribute("listC", dbh.getAllCategory());
+            request.setAttribute("categories", dbh.getAllCategory());
             request.setAttribute("product", product);
             request.getRequestDispatcher("/staff/product/edit.jsp").forward(request, response);
         } catch (Exception e) {

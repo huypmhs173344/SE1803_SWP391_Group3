@@ -46,34 +46,25 @@
                 <div class="container">
                     <div class="login-wrap">
                         <div class="login-content">
-                            <h1 class="login-logo">Login</h1>
+                            <h1 class="login-logo">Reset password</h1>
                             <div class="login-form">
-                                <form action="login" method="post">
+                                <form action="forget-password" method="post">
                                     <div class="form-group">
-                                        <label>User name</label>
-                                        <input class="au-input au-input--full" name="name" placeholder="Username">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input class="au-input au-input--full" type="password" name="pass" placeholder="Password">
+                                        <label>Email</label>
+                                        <input class="au-input au-input--full" name="email" placeholder="Enter your email">
                                     </div>
                                     <div class="login-checkbox">
                                         <label>
-                                            <input type="checkbox" name="remember">Remember Me
+                                            <a href="login" style="color: blue">Login?</a>
                                         </label>
-                                        <label>
-                                            <a href="forget-password" style="color: blue">Forgotten Password?</a>
-                                        </label>
+                                        <span style="${error != null ? "color: red" : success != null ? "color: red" : ""}">
+                                            ${error != null ? error : success != null ? success : ""}
+                                        </span>
                                     </div>
-                                    <div class="g-recaptcha" data-sitekey="6LeTQfApAAAAAIG0u1xXfUJHt66INRmu2IxiehDR"></div>
+                                  
                                     <div style="color: red">${f}</div>
-                                    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
-                                    <div class="social-login-content">
-                                        <div class="social-button">
-                                            <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
-                                            <button class="au-btn au-btn--block au-btn--blue2">sign in with twitter</button>
-                                        </div>
-                                    </div>
+                                    <button onclick="return confirm('Are you sure to reset password?')" class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Reset password</button>
+                                        
                                 </form>
                                 <div class="register-link">
                                     <p >
@@ -114,21 +105,21 @@
         <script src="js/main.js"></script>
         <script src="https://www.google.com/recaptcha/api.js"></script>
         <script>
-            window.onload = function() {
-                const form = document.getElementById("form");
-                const error = document.getElementById("error");
+                                        window.onload = function () {
+                                            const form = document.getElementById("form");
+                                            const error = document.getElementById("error");
 
-                form.addEventListener("submit", function(event) {
-                    event.preventDefault();
-                    const response = grecaptcha.getResponse();
+                                            form.addEventListener("submit", function (event) {
+                                                event.preventDefault();
+                                                const response = grecaptcha.getResponse();
 
-                    if (response.length === 0) {
-                        error.innerHTML = "Please check the reCAPTCHA.";
-                    } else {
-                        form.submit();
-                    }
-                });
-            }
+                                                if (response.length === 0) {
+                                                    error.innerHTML = "Please check the reCAPTCHA.";
+                                                } else {
+                                                    form.submit();
+                                                }
+                                            });
+                                        }
         </script>
 
     </body>

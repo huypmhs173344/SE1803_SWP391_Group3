@@ -12,6 +12,14 @@
         <servlet-name>CheckOut</servlet-name>
         <servlet-class>controller.CheckOut</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerCategoryController</servlet-name>
+        <servlet-class>controller.ManagerCategoryController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgetPasswordController</servlet-name>
+        <servlet-class>controller.ForgetPasswordController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DeleteCart</servlet-name>
         <url-pattern>/deletecart</url-pattern>
@@ -27,6 +35,14 @@
     <servlet-mapping>
         <servlet-name>CheckOut</servlet-name>
         <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerCategoryController</servlet-name>
+        <url-pattern>/manager-category</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgetPasswordController</servlet-name>
+        <url-pattern>/forget-password</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home</welcome-file>
