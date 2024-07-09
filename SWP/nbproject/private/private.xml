@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/web/viewAdmin/Navbar.jsp</file>
-            <file>file:/C:/Users/DUNGVT/OneDrive/Desktop/SWP/web/profile.jsp</file>
+            <file>file:/C:/Users/DUNGVT/OneDrive/Documents/GitHub/SE1803_SWP391_Group3/SWP/src/java/model/Feedback.java</file>
+            <file>file:/C:/Users/DUNGVT/OneDrive/Documents/GitHub/SE1803_SWP391_Group3/SWP/src/java/controller/LoginSeverlet.java</file>
+            <file>file:/C:/Users/DUNGVT/OneDrive/Documents/GitHub/SE1803_SWP391_Group3/SWP/web/ProDetails.jsp</file>
+            <file>file:/C:/Users/DUNGVT/OneDrive/Documents/GitHub/SE1803_SWP391_Group3/SWP/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/DUNGVT/OneDrive/Documents/GitHub/SE1803_SWP391_Group3/SWP/src/java/controller/FeedbackServlet.java</file>
         </group>
     </open-files>
 </project-private>

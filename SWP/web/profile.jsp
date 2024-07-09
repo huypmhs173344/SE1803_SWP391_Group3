@@ -229,30 +229,30 @@
                                                     }
                                                 }
                                                 
-                                                function validatePhone() {
-                                                    let inputNum = document.getElementById("inputPhone");
-                                                    var phonePartern = /^\d{10}$/;
-                                                    if (inputNum.value.match(phonePartern))
-                                                    {
-                                                        document.getElementById('check_phone_alert').style.color = 'red';
-                                                        document.getElementById('check_phone_alert').innerHTML = 'Phone is not match with format';
-                                                        document.getElementById("updateProflie").disabled = true;
-                                                        document.getElementById("updateProflie").style.opacity = 0.3;
-                                                    }
-                                                }
-                                                
-                                                function phonenumber(inputtxt)
-                                                {
-                                                    var phoneno = /^\d{10}$/;
-                                                    if ((inputtxt.value.match(phoneno))
-                                                    {
-                                                        return true;
-                                                    } else
-                                                    {
-                                                        alert("message");
-                                                        return false;
-                                                    }
-                                                }
+//                                                function validatePhone() {
+//                                                    let inputNum = document.getElementById("inputPhone");
+//                                                    var phonePartern = /^\d{10}$/;
+//                                                    if (inputNum.value.match(phonePartern))
+//                                                    {
+//                                                        document.getElementById('check_phone_alert').style.color = 'red';
+//                                                        document.getElementById('check_phone_alert').innerHTML = 'Phone is not match with format';
+//                                                        document.getElementById("updateProflie").disabled = true;
+//                                                        document.getElementById("updateProflie").style.opacity = 0.3;
+//                                                    }
+//                                                }
+//                                                
+//                                                function phonenumber(inputtxt)
+//                                                {
+//                                                    var phoneno = /^\d{10}$/;
+//                                                    if ((inputtxt.value.match(phoneno))
+//                                                    {
+//                                                        return true;
+//                                                    } else
+//                                                    {
+//                                                        alert("message");
+//                                                        return false;
+//                                                    }
+//                                                }
         </script>
     </body>
 </html>
