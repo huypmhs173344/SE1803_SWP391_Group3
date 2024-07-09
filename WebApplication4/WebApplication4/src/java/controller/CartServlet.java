@@ -69,7 +69,7 @@ public class CartServlet extends HttpServlet {
         List<Cart> listCart = new ArrayList<>();
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("acc");
-        listCart = db.getCart(u.getId());
+        listCart = db.getCart(8);
         int subtotal = 0;
         for (Cart cart : listCart) {
             subtotal = subtotal +cart.gettotal();

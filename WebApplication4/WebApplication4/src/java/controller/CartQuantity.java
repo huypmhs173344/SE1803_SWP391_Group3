@@ -62,7 +62,7 @@ public class CartQuantity extends HttpServlet {
                 DBCart db = new DBCart();
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("acc");        
-        db.moreQuantity(u.getId(), Integer.parseInt(request.getParameter("id")));
+        db.moreQuantity(8, Integer.parseInt(request.getParameter("id")));
         response.sendRedirect("cart");
        
         //db.lessQuantity(8, Integer.parseInt(request.getParameter("pid")));

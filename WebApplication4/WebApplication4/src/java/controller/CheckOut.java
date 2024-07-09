@@ -12,6 +12,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Cart;
@@ -62,11 +64,16 @@ public class CheckOut extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                DBCart db = new DBCart();
+               DBCart db = new DBCart();
         List<Cart> listCart = new ArrayList<>();
         HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("acc");        
-        listCart = db.getCart(u.getId());
+        User u = (User) session.getAttribute("acc");
+        listCart = db.getCart(8);
+        int subtotal = 0;
+        for (Cart cart : listCart) {
+            subtotal = subtotal +cart.gettotal();
+        }
+        request.setAttribute("subtotal", subtotal);
         request.setAttribute("cart", listCart);
         request.getRequestDispatcher("checkout.jsp").forward(request, response);
     }
@@ -82,7 +89,39 @@ public class CheckOut extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String name = request.getParameter("name");
+        String mobile = request.getParameter("mobile");
+        String address = request.getParameter("address");
+        String note = request.getParameter("note");
+        
+        DBCart db = new DBCart();
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("acc");
+          // Lấy ngày giờ hiện tại
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        
+        // Định dạng ngày giờ theo mong muốn
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        
+        List<Cart> listCart = new ArrayList<>();
+        listCart = db.getCart(8);
+        int subtotal = 0;
+        for (Cart cart : listCart) {
+            subtotal = subtotal +cart.gettotal();
+        }
+        
+        db.createOrder(8, subtotal, 0, formattedDateTime, note, 0);
+        
+        int orderID;
+        orderID = db.findMaxOrderID();
+        
+        db.createShipping(orderID, name, mobile, address);
+        
+        for (Cart cart : listCart) {
+            db.createOrderDetails(orderID, cart.getProduct_id(), cart.getQuantity(), cart.gettotal());
+        }
+        response.sendRedirect("cart");
     }
 
     /**

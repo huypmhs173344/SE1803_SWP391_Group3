@@ -12,6 +12,18 @@
         <servlet-name>CheckOut</servlet-name>
         <servlet-class>controller.CheckOut</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Apibanking</servlet-name>
+        <servlet-class>controller.Apibanking</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VNPay_ReturnController</servlet-name>
+        <servlet-class>controller.VNPay_ReturnController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>vnpay</servlet-name>
+        <servlet-class>controller.vnpay</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DeleteCart</servlet-name>
         <url-pattern>/deletecart</url-pattern>
@@ -27,6 +39,18 @@
     <servlet-mapping>
         <servlet-name>CheckOut</servlet-name>
         <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Apibanking</servlet-name>
+        <url-pattern>/apibanking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VNPay_ReturnController</servlet-name>
+        <url-pattern>/VNPay_ReturnController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vnpay</servlet-name>
+        <url-pattern>/vnpay</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home</welcome-file>

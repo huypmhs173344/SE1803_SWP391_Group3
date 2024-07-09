@@ -7,7 +7,12 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import model.Cart;
 
@@ -82,7 +87,7 @@ public class DBCart extends DBContext {
         } catch (SQLException e) {
         }
     }
-    
+
     public void lessQuantity(int uid, int pid) {
         String sql = " UPDATE Cart "
                 + "SET quantity = quantity -1 "
@@ -95,17 +100,77 @@ public class DBCart extends DBContext {
         } catch (SQLException e) {
         }
     }
-    
+
+    public void createShipping(int order_id, String name, String phone, String address) {
+
+        String sql = "insert[dbo].[Shipping] ([order_id],[name],[phone],[address]) VALUES (?,?,?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, order_id);
+            st.setString(2, name);
+            st.setString(3, phone);
+            st.setString(4, address);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
+    public void createOrder(int user_id, int total_money, int status, String date, String note, int isPay) {
+
+        String sql = "insert into Orders ([user_id],[total_money],[status],[date],[note],[isPay]) "
+                + "values (?,?,?,?,?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, user_id);
+            st.setInt(2, total_money);
+            st.setInt(3, status);
+            st.setString(4, date);
+            st.setString(5, note);
+            st.setInt(6, isPay);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
+    public void createOrderDetails(int order_id, int product_id, int quantity, int price) {
+
+        String sql = "insert into OrderDetails ([order_id],[product_id],[quantity],[price])  values (?,?,?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, order_id);
+            st.setInt(2, product_id);
+            st.setInt(3, quantity);
+            st.setInt(4, price);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
+    public int findMaxOrderID() {
+        int order = 0;
+
+        String sql = "SELECT MAX(order_id)  FROM Orders ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+            
+        } catch (Exception e) { System.out.println(order);
+        }
+        return order;
+    }
 
     public static void main(String[] args) {
         DBCart db = new DBCart();
-        List<Cart> list = new ArrayList<>();
-        list = db.getCart(8);
-        for (Cart cart : list) {
-            System.out.println(cart.gettotal());
-        }
-        db.moreQuantity(8, 5);
-db.AddToCart(8,7 );
+           
+        
+        db.findMaxOrderID();
+        System.out.println(db.findMaxOrderID());
     }
 
 }
