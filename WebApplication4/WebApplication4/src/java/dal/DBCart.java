@@ -74,6 +74,17 @@ public class DBCart extends DBContext {
         } catch (SQLException e) {
         }
     }
+    public void deleteCartByUserId(int uid) {
+        String sql = " DELETE FROM [dbo].[Cart] "
+                + " WHERE  user_id = ? ";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, uid);
+           
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
 
     public void moreQuantity(int uid, int pid) {
         String sql = " UPDATE Cart "
@@ -171,6 +182,11 @@ public class DBCart extends DBContext {
         
         db.findMaxOrderID();
         System.out.println(db.findMaxOrderID());
+        db.AddToCart(8, 2);
+        db.AddToCart(8, 3);
+        db.AddToCart(8, 4);
+        db.AddToCart(8, 5);
+        db.AddToCart(8, 6);
     }
 
 }

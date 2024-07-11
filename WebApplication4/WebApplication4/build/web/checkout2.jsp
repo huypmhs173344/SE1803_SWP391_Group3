@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cart
-    Created on : Jun 10, 2024, 8:05:25 PM
+    Document   : checkout
+    Created on : Jun 13, 2024, 9:38:13 AM
     Author     : nitro5
 --%>
 
@@ -36,7 +36,6 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-
         <!-- Spinner Start -->
         <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status"></div>
@@ -73,8 +72,8 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="cart.html" class="dropdown-item active">Cart</a>
-                                    <a href="chackout.html" class="dropdown-item">Chackout</a>
+                                    <a href="cart.html" class="dropdown-item">Cart</a>
+                                    <a href="chackout.html" class="dropdown-item active">Chackout</a>
                                     <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                     <a href="404.html" class="dropdown-item">404 Page</a>
                                 </div>
@@ -120,106 +119,130 @@
 
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
-            <h1 class="text-center text-white display-6">Cart</h1>
+            <h1 class="text-center text-white display-6">Checkout</h1>
             <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active text-white">Cart</li>
+                <li class="breadcrumb-item active text-white">Checkout</li>
             </ol>
         </div>
         <!-- Single Page Header End -->
 
 
-        <!-- Cart Page Start -->
+        <!-- Checkout Page Start -->
         <div class="container-fluid py-5">
             <div class="container py-5">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Products</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Handle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach items = "${cart}" var = "c">
-                                <tr>
-                                    <th scope="row">
-                                        <div class="d-flex align-items-center">
-                                            <img src="${c.product_image}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <p class="mb-0 mt-4">${c.product_name}</p>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0 mt-4">${c.product_price}</p>
-                                    </td>
-                                    <td>
-                                        <div class="input-group quantity mt-4" style="width: 100px;">
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                                    <a href ="cartquantity2?id=${c.product_id}&quan=${c.quantity}"><i class="fa fa-minus"></i></a>
-                                                </button>
-                                            </div>
-                                            <input type="text" class="form-control form-control-sm text-center border-0" value=${c.quantity}>
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                    <a href ="cartquantity?id=${c.product_id}"><i class="fa fa-plus"></i></a>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0 mt-4">${c.gettotal()}</p>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-md rounded-circle bg-light border mt-4"
-                                                onclick="return confirm('Are you sure to delete this product?')" >
-
-                                            <a href ="deletecart?product_id=${c.product_id}"><i class="fa fa-times text-danger"></i></a>
-                                        </button>
-                                    </td>
-
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mt-5">
-
-                </div>
-                <div class="row g-4 justify-content-end">
-                    <div class="col-8"></div>
-                    <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
-                        <div class="bg-light rounded">
-
-                            <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
-                                <h5 class="mb-0 ps-4 me-4">Total</h5>
-                                <p class="mb-0 pe-4">${subtotal}</p>
-                            </div>
-                            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">
-                                <a href="checkout">Direct payment</a>
-                            </button>
-                            <form action="vnpay" >
-
-                                <div class="py-3 border-bottom border-top">
-                                    <input type="hidden" name="subtotal" value="${subtotal}">
+                <h1 class="mb-4">Billing details</h1>
+                <form action="checkout2" method="post">
+                    <div class="row g-5">
+                        <div class="col-md-12 col-lg-6 col-xl-7">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="form-item w-100">
+                                        <label class="form-label my-3"> Name<sup>*</sup></label>
+                                        <input type="text" name="name" class="form-control">
+                                    </div>
                                 </div>
-                                <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="submit">
-                                    <a>Payment With VNPay</a>
-                                </button>
-                            </form> 
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="form-item w-100">
+                                        <label class="form-label my-3">Mobile<sup>*</sup></label>
+                                        <input type="text" name="mobile" class="form-control" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                <label class="form-label my-3">Address<sup>*</sup></label>
+                                <input type="text" name="address" class="form-control">
+                            </div>
+                            <div class="form-item">
+                                <label class="form-label my-3">Note<sup>*</sup></label>
+                                <input type="text" name="note" class="form-control">
+                            </div>
+
                         </div>
+
+
+
                     </div>
-                </div>
+                    <div class="col-md-12 col-lg-6 col-xl-5">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Products</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items = "${cart}" var = "c">
+                                        <tr>
+                                            <th scope="row">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="${c.product_image}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <p class="mb-0 mt-4">${c.product_name}</p>
+                                            </td>
+                                            <td>
+                                                <p class="mb-0 mt-4">${c.product_price}</p>
+                                            </td>
+                                            <td>
+                                                <div class="input-group quantity mt-4" style="width: 100px;">
+                                                    <div class="input-group-btn">
+
+                                                    </div>
+                                                    <input type="text" class="form-control form-control-sm text-center border-0" value=${c.quantity}>
+                                                    <div class="input-group-btn">
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="mb-0 mt-4">${c.gettotal()}</p>
+                                            </td>
+
+
+                                        </tr>
+                                    </c:forEach>
+                                    <tr>
+                                        <th scope="row">
+                                        </th>
+                                        <td class="py-5"></td>
+                                        <td class="py-5"></td>
+                                        <td class="py-5">
+                                            <p class="mb-0 text-dark py-3">Subtotal</p>
+                                        </td>
+                                        <td class="py-5">
+                                            <div class="py-3 border-bottom border-top">
+                                                <p class="mb-0 text-dark">${subtotal}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+
+                        <div class="row g-4 text-center align-items-center justify-content-center pt-4">
+                            <button type="submit" name="submit" value="0"class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place Order</button>
+                        </div>
+
+                        
+                    </div>
+                </form>
+                
             </div>
+
+
         </div>
-        <!-- Cart Page End -->
+
+        <!-- Checkout Page End -->
 
 
         <!-- Footer Start -->
@@ -329,5 +352,6 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+
     </body>
 </html>

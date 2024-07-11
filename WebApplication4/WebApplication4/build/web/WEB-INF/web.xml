@@ -24,6 +24,10 @@
         <servlet-name>vnpay</servlet-name>
         <servlet-class>controller.vnpay</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckOut2</servlet-name>
+        <servlet-class>controller.CheckOut2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DeleteCart</servlet-name>
         <url-pattern>/deletecart</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>vnpay</servlet-name>
         <url-pattern>/vnpay</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckOut2</servlet-name>
+        <url-pattern>/checkout2</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home</welcome-file>

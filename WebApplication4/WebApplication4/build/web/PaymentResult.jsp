@@ -47,7 +47,7 @@
         <div class="container">
             <h1>Payment Result</h1>
             <p><%= message %></p>
-            <a href="cart">Back To Home</a>
+            <a href="checkout2">Checkout</a>
         </div>
     </body>
 </html>

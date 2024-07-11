@@ -146,7 +146,7 @@
                                 <div class="col-md-12 col-lg-6">
                                     <div class="form-item w-100">
                                         <label class="form-label my-3">Mobile<sup>*</sup></label>
-                                        <input type="text" name="mobile" class="form-control">
+                                        <input type="text" name="mobile" class="form-control" required="">
                                     </div>
                                 </div>
                             </div>
@@ -230,26 +230,13 @@
 
 
                         <div class="row g-4 text-center align-items-center justify-content-center pt-4">
-                            <button type="submit" name="submit" value="0"class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">direct payment</button>
+                            <button type="submit" name="submit" value="0"class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place Order</button>
                         </div>
 
-                        <div class="row g-4 text-center align-items-center justify-content-center pt-4">
-                            <button type="submit" name="submit" value="1"class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Pay with VNPay</button>
-                        </div>
+                        
                     </div>
                 </form>
-                <form action="vnpay" >
-
-                    <div class="py-3 border-bottom border-top">
-
-                        <input type="hidden" name="subtotal" value="${subtotal}">
-                    </div>
-
-
-                    <div class="row g-4 text-center align-items-center justify-content-center pt-4">
-                        <button type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Pay with VNPay</button>
-                    </div>
-                </form> 
+                
             </div>
 
 

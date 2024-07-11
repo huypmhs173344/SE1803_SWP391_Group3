@@ -160,19 +160,19 @@
                                         <p class="mb-0 mt-4">${c.product_price}</p>
                                     </td>
                                     <td>
-                                       <div class="input-group quantity mt-4" style="width: 100px;">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                                <a href ="cartquantity2?id=${c.product_id}&quan=${c.quantity}"><i class="fa fa-minus"></i></a>
-                                            </button>
+                                        <div class="input-group quantity mt-4" style="width: 100px;">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                                    <a href ="cartquantity2?id=${c.product_id}&quan=${c.quantity}"><i class="fa fa-minus"></i></a>
+                                                </button>
+                                            </div>
+                                            <input type="text" class="form-control form-control-sm text-center border-0" value=${c.quantity}>
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                    <a href ="cartquantity?id=${c.product_id}"><i class="fa fa-plus"></i></a>
+                                                </button>
+                                            </div>
                                         </div>
-                                                <input type="text" class="form-control form-control-sm text-center border-0" value=${c.quantity}>
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                <a href ="cartquantity?id=${c.product_id}"><i class="fa fa-plus"></i></a>
-                                            </button>
-                                        </div>
-                                    </div>
                                     </td>
                                     <td>
                                         <p class="mb-0 mt-4">${c.gettotal()}</p>
@@ -191,20 +191,29 @@
                     </table>
                 </div>
                 <div class="mt-5">
-                    
+
                 </div>
                 <div class="row g-4 justify-content-end">
                     <div class="col-8"></div>
                     <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
                         <div class="bg-light rounded">
-                            
+
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                 <h5 class="mb-0 ps-4 me-4">Total</h5>
                                 <p class="mb-0 pe-4">${subtotal}</p>
                             </div>
                             <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">
-                                <a href="checkout">Proceed Checkout</a>
+                                <a href="checkout">Direct payment</a>
                             </button>
+                            <form action="vnpay" >
+
+                                <div class="py-3 border-bottom border-top">
+                                    <input type="hidden" name="subtotal" value="${subtotal}">
+                                </div>
+                                <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="submit">
+                                    <a>Payment With VNPay</a>
+                                </button>
+                            </form> 
                         </div>
                     </div>
                 </div>

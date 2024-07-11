@@ -24,7 +24,7 @@ import model.User;
  *
  * @author nitro5
  */
-public class CheckOut extends HttpServlet {
+public class CheckOut2 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -75,7 +75,7 @@ public class CheckOut extends HttpServlet {
         }
         request.setAttribute("subtotal", subtotal);
         request.setAttribute("cart", listCart);
-        request.getRequestDispatcher("checkout.jsp").forward(request, response);
+        request.getRequestDispatcher("checkout2.jsp").forward(request, response);
     }
 
     /**
@@ -111,7 +111,7 @@ public class CheckOut extends HttpServlet {
             subtotal = subtotal +cart.gettotal();
         }
         
-        db.createOrder(8, subtotal, 0, formattedDateTime, note, 0);
+        db.createOrder(8, subtotal, 0, formattedDateTime, note, 1);
         
         int orderID;
         orderID = db.findMaxOrderID();
