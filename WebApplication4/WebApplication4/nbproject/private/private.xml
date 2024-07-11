@@ -4,11 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/nitro5/Downloads/WebApplication4/WebApplication4/web/checkout.jsp</file>
-            <file>file:/C:/Users/nitro5/Downloads/WebApplication4/WebApplication4/src/java/controller/VNPay_ReturnController.java</file>
-            <file>file:/C:/Users/nitro5/Downloads/WebApplication4/WebApplication4/web/PaymentResult.jsp</file>
-            <file>file:/C:/Users/nitro5/Downloads/WebApplication4/WebApplication4/src/java/controller/CheckOut.java</file>
-            <file>file:/C:/Users/nitro5/Downloads/WebApplication4/WebApplication4/src/java/controller/vnpay.java</file>
-            <file>file:/C:/Users/nitro5/Downloads/WebApplication4/WebApplication4/src/java/controller/CheckOut2.java</file>
+            <file>file:/C:/Users/nitro5/Downloads/WebApplication4/WebApplication4/web/checkout2.jsp</file>
             <file>file:/C:/Users/nitro5/Downloads/WebApplication4/WebApplication4/src/java/dal/DBCart.java</file>
         </group>
     </open-files>

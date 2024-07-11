@@ -139,23 +139,32 @@
                             <div class="row">
                                 <div class="col-md-12 col-lg-6">
                                     <div class="form-item w-100">
-                                        <label class="form-label my-3"> Name<sup>*</sup></label>
-                                        <input type="text" name="name" class="form-control">
+                                        <label class="form-label my-3"> Name<sup style="color: red">*</sup></label>
+                                        <input type="text" id="name" name="name" class="form-control" value="${requestScope.name}"> 
+                                        <c:if test="${requestScope.message != null}">
+                                            <span style="color: red">${requestScope.message}</span>
+                                        </c:if>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-lg-6">
                                     <div class="form-item w-100">
-                                        <label class="form-label my-3">Mobile<sup>*</sup></label>
-                                        <input type="text" name="mobile" class="form-control" required="">
+                                        <label class="form-label my-3">Mobile<sup style="color: red">*</sup></label>
+                                        <input type="text" id="moblie" name="mobile" class="form-control" value="${requestScope.mobile}">
+                                        <c:if test="${requestScope.message1 != null}">
+                                            <span style="color: red">${requestScope.message1}</span>
+                                        </c:if>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-item">
-                                <label class="form-label my-3">Address<sup>*</sup></label>
-                                <input type="text" name="address" class="form-control">
+                                <label class="form-label my-3">Address<sup style="color: red">*</sup></label>
+                                <input type="text" name="address" id="address" class="form-control" value="${requestScope.addr}">
+                                <c:if test="${requestScope.message2 != null}">
+                                    <span style="color: red">${requestScope.message2}</span>
+                                </c:if>
                             </div>
                             <div class="form-item">
-                                <label class="form-label my-3">Note<sup>*</sup></label>
+                                <label class="form-label my-3">Note</label>
                                 <input type="text" name="note" class="form-control">
                             </div>
 
@@ -352,6 +361,10 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
-
+<script>
+            function checkoutMessage() {
+                alert("Checkout successfull!!!");
+            }
+        </script>
     </body>
 </html>

@@ -92,6 +92,32 @@ public class CheckOut2 extends HttpServlet {
         String name = request.getParameter("name");
         String mobile = request.getParameter("mobile");
         String address = request.getParameter("address");
+        boolean check_empty = false;
+
+        if (name.equals("")) {
+            request.setAttribute("message", "Please fill this field");
+            check_empty = true;
+        } else {
+            request.setAttribute("name", name);
+        }
+
+        if (mobile.equals("")) {
+            request.setAttribute("message1", "Please fill this field");
+            check_empty = true;
+        } else {
+            request.setAttribute("mobile", mobile);
+        }
+
+        if (address.equals("")) {
+            request.setAttribute("message2", "Please fill this field");
+            check_empty = true;
+        } else {
+            request.setAttribute("addr", address);
+        }
+
+        if (check_empty == true) {
+            doGet(request, response);
+        }
         String note = request.getParameter("note");
         
         DBCart db = new DBCart();
