@@ -42,28 +42,32 @@
                         <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>
                     </div>
                     <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                        <c:if test="${ empty sessionScope.acc}">
+                            <a href="login" class="text-white"><small class="text-white mx-2">Login</small>/</a>
+                            <a href="signup" class="text-white"><small class="text-white mx-2">Sign up</small></a>                            
+                        </c:if>   
+                        <c:if test="${not empty sessionScope.acc}">
+                            <a href="login" class="text-white"><small class="text-white ms-2">Log out</small></a>
+                        </c:if>
                     </div>
                 </div>
             </div>
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">Fruitables</h1></a>
+                    <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">Food Shop</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="shop.html" class="nav-item nav-link">Shop</a>
+                            <a href="home" class="nav-item nav-link active">Home</a>
+                            <a href="search" class="nav-item nav-link">Shop</a>
                             <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="cart.html" class="dropdown-item">Cart</a>
-                                    <a href="chackout.html" class="dropdown-item">Chackout</a>
+                                    <a href="cart" class="dropdown-item">Cart</a>
+                                    <a href="chackout" class="dropdown-item">Chackout</a>
                                     <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                     <a href="404.html" class="dropdown-item">404 Page</a>
                                 </div>
@@ -160,7 +164,7 @@
                                         <div class="col-12">
                                             <label for="newPassword" class="form-label">New Password</label>
                                             <input type="password" class="form-control" id="newPassword" name="npass" required=""
-                                                   placeholder="Input your new password you want to change here" value="${requestScope.npass}">
+                                                   placeholder="Input your new password you want to change here(6-30 characters)" value="${requestScope.npass}">
                                         </div>
                                         <div style="margin-left: 1%"class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" onclick="Toggle('newPassword')">
@@ -228,20 +232,25 @@
                                                         temp.type = "password";
                                                     }
                                                 }
-                                                
+
                                                 function validatePhone() {
                                                     let inputNum = document.getElementById("inputPhone");
                                                     var phonePartern = /^\d{10}$/;
-                                                    if (inputNum.value.match(phonePartern))
+                                                    if (!inputNum.value.match(phonePartern))
                                                     {
                                                         document.getElementById('check_phone_alert').style.color = 'red';
                                                         document.getElementById('check_phone_alert').innerHTML = 'Phone is not match with format';
                                                         document.getElementById("updateProflie").disabled = true;
                                                         document.getElementById("updateProflie").style.opacity = 0.3;
+                                                    } else {
+                                                        document.getElementById('check_phone_alert').style.color = 'green';
+                                                        document.getElementById('check_phone_alert').innerHTML = 'Phone is matched with format';
+                                                        document.getElementById("updateProflie").disabled = false;
+                                                        document.getElementById("updateProflie").style.opacity = 1;
                                                     }
                                                 }
-                                                
-                                                
+
+
         </script>
     </body>
 </html>

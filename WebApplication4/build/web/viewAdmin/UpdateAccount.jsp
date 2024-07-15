@@ -151,8 +151,8 @@
                                                     <div class="form-group">
                                                         <label class="profile_details_text">Status</label>
                                                         <select name="status" class="form-control">
-                                                            <option value="0" ${u.role == 0 ? "selected":""}>Suspended</option>
-                                                            <option value="1"${u.role == 1 ? "selected":""}>Active</option>
+                                                            <option value="0" ${u.status == 0 ? "selected":""}>Suspended</option>
+                                                            <option value="1"${u.status == 1 ? "selected":""}>Active</option>
                                                         </select>
                                                     </div>
                                                 </div>

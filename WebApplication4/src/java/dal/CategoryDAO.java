@@ -55,6 +55,62 @@ public class CategoryDAO extends DBContext{
         return null;
     }
     
+    public Categories selectCategory(int category_id) {
+        Categories category = null;
+        try {
+            String sql = "SELECT category_id, category_name FROM Categories WHERE category_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, category_id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String category_name = rs.getString("category_name");
+                category = new Categories(category_id, category_name);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return category;
+    }
+
+    public void insertCategory(Categories category) {
+        try {
+            String sql = "INSERT INTO Categories (category_name) VALUES (?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, category.getCname());
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Add category: " + e);
+        }
+    }
+
+    public boolean updateCategory(Categories category) {
+        boolean rowUpdated = false;
+        try {
+            String sql = "UPDATE Categories SET category_name = ? WHERE category_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, category.getCname());
+            preparedStatement.setInt(2, category.getCid());
+            rowUpdated = preparedStatement.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rowUpdated;
+    }
+
+    public boolean deleteCategory(int category_id) {
+        boolean rowDeleted = false;
+        try {
+            String sql = "DELETE FROM Categories WHERE category_id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, category_id);
+            rowDeleted = preparedStatement.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rowDeleted;
+    }
+    
     public static void main(String[] args) {
         CategoryDAO db = new CategoryDAO();
         List<Categories> categories = new ArrayList<>();

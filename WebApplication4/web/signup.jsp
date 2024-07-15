@@ -23,7 +23,7 @@
 					<h3>New Account</h3>
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
-                                                <input type="text" class="form-control" placeholder="Username" name="name">
+                                                <input type="text" class="form-control" placeholder="Username(6-30 characters)" name="name">
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-phone-handset"></span>
@@ -31,15 +31,15 @@
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-envelope"></span>
-                                                <input type="text" class="form-control" placeholder="Adress" name="adress">
+                                                <input type="text" class="form-control" placeholder="Email" name="email">
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-lock"></span>
-                                                <input type="password" class="form-control" placeholder="Password" name="pass">
+                                                <input type="password" class="form-control" placeholder="Password(6-30 characters)" name="pass">
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-lock"></span>
-                                                <input type="password" class="form-control" placeholder="Confirm Password" name="repass">
+                                                <input type="password" class="form-control" placeholder="Confirm Password(6-30 characters)" name="repass">
 					</div>
                                         ${f}
 					<button>

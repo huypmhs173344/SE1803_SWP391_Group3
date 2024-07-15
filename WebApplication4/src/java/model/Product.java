@@ -12,6 +12,14 @@ public class Product {
     String status;
 
     public Product() {
+        
+    }
+    
+    public Product(int pid, String pname, String image, int price) {
+        this.pid = pid;
+        this.pname = pname;
+        this.price = price;       
+        this.image = image;
     }
 
     public Product(int pid, String pname, int cid, int price, String pdes, String image, String status) {

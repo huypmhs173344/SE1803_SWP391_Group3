@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Feedback;
 import model.User;
 
 
@@ -20,7 +21,7 @@ public class DBContext {
         try {
             String user = "sa";
             String pass = "123";
-            String url = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=FoodShop";
+            String url = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=FoodShop2";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException | SQLException ex) {
@@ -135,8 +136,8 @@ public class DBContext {
         return 1;
     }
     
-    public void Signup(String name, String pass, String phone, String adress) throws SQLException {
-        String sql = "insert into Users(user_id, username, password, phone_number, address, Role, status) "
+    public void Signup(String name, String pass, String phone, String email) throws SQLException {
+        String sql = "insert into Users(user_id, username, password, phone_number, gmail, Role, status) "
                 + "values(?,?,?,?,?,2,1)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -144,10 +145,52 @@ public class DBContext {
             st.setString(2, name);
             st.setString(3, pass);
             st.setString(4, phone);
-            st.setString(5, adress);
+            st.setString(5, email);
             st.executeUpdate();
         } catch (SQLException e) {
 
+        }
+    }
+    
+    public List<Feedback> getFeedbackByPid(int pid) {
+        List<Feedback> list = new ArrayList<>();
+        String sql = """
+                     SELECT [feedback_id],
+                     Feedback.user_id,
+                     Users.full_name
+                           ,[product_id]
+                           ,[description]
+                           ,[feedback_date]
+                       FROM [dbo].[Feedback] JOIN Users ON Feedback.user_id = Users.user_id WHERE Feedback.product_id = ? """;
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, pid);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Feedback(rs.getInt(1), rs.getInt(2), rs.getString(3), pid, rs.getString(5), rs.getDate(6)));
+            }
+
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+
+    public void createFeedback(int u_id, int p_id, String des) {
+        String sql = """
+                     INSERT INTO [dbo].[Feedback]
+                                ([user_id]
+                                ,[product_id]
+                                ,[description]
+                                ,[feedback_date])
+                          VALUES
+                                (?           ,?           ,?           ,GETDATE())""";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, u_id);
+            ps.setInt(2, p_id);
+            ps.setString(3, des);
+            ps.executeUpdate();
+        } catch (SQLException e) {
         }
     }
     

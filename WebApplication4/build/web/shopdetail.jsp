@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Fruitables - Vegetable Website Template</title>
+        <title>Detail | Food Shop</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -42,7 +42,6 @@
         </div>
         <!-- Spinner End -->
 
-
         <!-- Navbar start -->
         <div class="container-fluid fixed-top">
             <div class="container topbar bg-primary d-none d-lg-block">
@@ -52,41 +51,37 @@
                         <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>
                     </div>
                     <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                        <c:if test="${ empty sessionScope.acc}">
+                            <a href="login" class="text-white"><small class="text-white mx-2">Login</small>/</a>
+                            <a href="signup" class="text-white"><small class="text-white mx-2">Sign up</small></a>                            
+                        </c:if>   
+                        <c:if test="${not empty sessionScope.acc}">
+                            <a href="login" class="text-white"><small class="text-white ms-2">Log out</small></a>
+                        </c:if>
                     </div>
                 </div>
             </div>
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">Fruitables</h1></a>
+                    <a href="home" class="navbar-brand"><h1 class="text-primary display-6">Food Shop</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.html" class="nav-item nav-link">Home</a>
-                            <a href="shop.html" class="nav-item nav-link">Shop</a>
-                            <a href="shop-detail.html" class="nav-item nav-link active">Shop Detail</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="cart.html" class="dropdown-item">Cart</a>
-                                    <a href="chackout.html" class="dropdown-item">Chackout</a>
-                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="404.html" class="dropdown-item">404 Page</a>
-                                </div>
-                            </div>
+                            <a href="home" class="nav-item nav-link ">Home</a>
+                            <a href="search" class="nav-item nav-link active">Shop</a>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="d-flex m-3 me-0">
-                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
-                            <a href="#" class="position-relative me-4 my-auto">
+                            <a href="search" >
+                                <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal"><i class="fas fa-search text-primary"></i></button>
+                            </a>                           
+                            <a href="cart" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
                             </a>
-                            <a href="#" class="my-auto">
+                            <a href="profile" class="my-auto">
                                 <i class="fas fa-user fa-2x"></i>
                             </a>
                         </div>
@@ -94,7 +89,7 @@
                 </nav>
             </div>
         </div>
-        <!-- Navbar End -->
+        <!-- Navbar End --> 
 
 
         <!-- Modal Search Start -->
@@ -119,11 +114,10 @@
 
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
-            <h1 class="text-center text-white display-6">Shop Detail</h1>
+            <h1 class="text-center text-white display-6">Shop</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active text-white">Shop Detail</li>
+                <li class="breadcrumb-item"><a href="home">Home</a></li>
+                <li class="breadcrumb-item active text-white">Detail</li>
             </ol>
         </div>
         <!-- Single Page Header End -->
@@ -138,7 +132,7 @@
                             <div class="col-lg-6">
                                 <div class="border rounded">
                                     <a href="#">
-                                        <img src="${MainP.image}" class="img-fluid rounded" alt="Image">
+                                        <img src="${MainP.image}" class="img-fluid rounded" style="width: 500px"alt="Image">
                                     </a>
                                 </div>
                             </div>
@@ -146,13 +140,7 @@
                                 <h4 class="fw-bold mb-3">${MainP.pname}</h4>
                                 <p class="mb-3">Category: ${MainP.cid}</p>
                                 <h5 class="fw-bold mb-3">${MainP.price}</h5>
-                                <div class="d-flex mb-4">
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
+                                
                                 <p class="mb-4">${MainP.pdes}</p>
                                 <div class="input-group quantity mb-5" style="width: 100px;">
                                     <div class="input-group-btn">
@@ -167,129 +155,51 @@
                                         </button>
                                     </div>
                                 </div>
-                                <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                <a href="addtocart?pid=${MainP.pid}" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                             </div>
                             <div class="col-lg-12">
                                 <nav>
                                     <div class="nav nav-tabs mb-3">
-                                        <button class="nav-link active border-white border-bottom-0" type="button" role="tab"
-                                                id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
-                                                aria-controls="nav-about" aria-selected="true">Description</button>
+                                        
                                         <button class="nav-link border-white border-bottom-0" type="button" role="tab"
                                                 id="nav-mission-tab" data-bs-toggle="tab" data-bs-target="#nav-mission"
                                                 aria-controls="nav-mission" aria-selected="false">Reviews</button>
                                     </div>
                                 </nav>
                                 <div class="tab-content mb-5">
-                                    <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                        <p>The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc. 
-                                            Susp endisse ultricies nisi vel quam suscipit </p>
-                                        <p>Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish filefish Antarctic 
-                                            icefish goldeye aholehole trumpetfish pilot fish airbreathing catfish, electric ray sweeper.</p>
-                                        <div class="px-2">
-                                            <div class="row g-4">
-                                                <div class="col-6">
-                                                    <div class="row bg-light align-items-center text-center justify-content-center py-2">
-                                                        <div class="col-6">
-                                                            <p class="mb-0">Weight</p>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <p class="mb-0">1 kg</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row text-center align-items-center justify-content-center py-2">
-                                                        <div class="col-6">
-                                                            <p class="mb-0">Country of Origin</p>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <p class="mb-0">Agro Farm</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row bg-light text-center align-items-center justify-content-center py-2">
-                                                        <div class="col-6">
-                                                            <p class="mb-0">Quality</p>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <p class="mb-0">Organic</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row text-center align-items-center justify-content-center py-2">
-                                                        <div class="col-6">
-                                                            <p class="mb-0">Сheck</p>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <p class="mb-0">Healthy</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row bg-light text-center align-items-center justify-content-center py-2">
-                                                        <div class="col-6">
-                                                            <p class="mb-0">Min Weight</p>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <p class="mb-0">250 Kg</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                                        <div class="d-flex">
-                                            <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
-                                            <div class="">
-                                                <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
-                                                <div class="d-flex justify-content-between">
-                                                    <h5>Jason Smith</h5>
-                                                    <div class="d-flex mb-3">
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star"></i>
+                                        <c:forEach items="${requestScope.list_f}" var="fed">
+                                            <div class="d-flex">
+                                                <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
+                                                <div class="">
+                                                    <p class="mb-2" style="font-size: 14px;">${fed.f_date}</p>
+                                                    <div class="d-flex justify-content-between">
+                                                        <h5>${fed.u_name}</h5>
                                                     </div>
+                                                    <p>${fed.f_des} </p>
                                                 </div>
-                                                <p>The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic 
-                                                    words etc. Susp endisse ultricies nisi vel quam suscipit </p>
                                             </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
-                                            <div class="">
-                                                <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
-                                                <div class="d-flex justify-content-between">
-                                                    <h5>Sam Peters</h5>
-                                                    <div class="d-flex mb-3">
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                </div>
-                                                <p class="text-dark">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic 
-                                                    words etc. Susp endisse ultricies nisi vel quam suscipit </p>
-                                            </div>
-                                        </div>
+                                        </c:forEach>
                                     </div>
-                                    <div class="tab-pane" id="nav-vision" role="tabpanel">
-                                        <p class="text-dark">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                                            amet diam et eos labore. 3</p>
-                                        <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
-                                            Clita erat ipsum et lorem et sit</p>
-                                    </div>
+                                    
                                 </div>
                             </div>
-                            <form action="#">
-                                <h4 class="mb-5 fw-bold">Leave a Reply</h4>
-                                <div class="row g-4">                                    
+                            <form action="feedback?pid=${requestScope.pid}" method="POST">
+                                <h4 class="mb-5 fw-bold">Leave a Review</h4>
+                                <div class="row g-4">
                                     <div class="col-lg-12">
                                         <div class="border-bottom rounded my-4">
-                                            <textarea name="" id="" class="form-control border-0" cols="30" rows="8" placeholder="Your Review *" spellcheck="false"></textarea>
+                                            <textarea name="des" id="" class="form-control border-0" cols="30" rows="8" placeholder="Your Review *" spellcheck="false"  required=""></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="d-flex justify-content-between py-3 mb-5">
-                                            <a href="#" class="btn border border-secondary text-primary rounded-pill px-4 py-3"> Post Comment</a>
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex align-items-center" style="font-size: 12px;">
+                                                </div>
+                                            </div>
+                                            <button class="btn border border-secondary text-primary rounded-pill px-4 py-3"> Post Comment</button>
                                         </div>
                                     </div>
                                 </div>
@@ -301,22 +211,13 @@
                             <div class="col-lg-12">
                                 <form action="search">
                                     <div class="input-group w-100 mx-auto d-flex mb-4">
-                                        <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                                        <input name="keyword" type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
                                         <button id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></button>>
                                     </div>
                                 </form>
 
                                 <div class="mb-4">
-                                    <h4>Categories</h4>
-                                    <ul class="list-unstyled fruite-categorie">
-                                        <c:forEach var="c" items="${listC}">
-                                            <li>
-                                                <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="#"><i class="fas fa-apple-alt me-2"></i>${c.cname}</a>
-                                                </div>
-                                            </li>    
-                                        </c:forEach>
-                                    </ul>
+                                    
                                 </div>
                             </div>
                         </div>

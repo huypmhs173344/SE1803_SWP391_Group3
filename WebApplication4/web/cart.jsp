@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Fruitables - Vegetable Website Template</title>
+        <title>Cart | Food Shop</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -37,12 +37,11 @@
     </head>
     <body>
 
-        <!-- Spinner Start -->
+         <!-- Spinner Start -->
         <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status"></div>
         </div>
         <!-- Spinner End -->
-
 
         <!-- Navbar start -->
         <div class="container-fluid fixed-top">
@@ -53,41 +52,37 @@
                         <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>
                     </div>
                     <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                        <c:if test="${ empty sessionScope.acc}">
+                            <a href="login" class="text-white"><small class="text-white mx-2">Login</small>/</a>
+                            <a href="signup" class="text-white"><small class="text-white mx-2">Sign up</small></a>                            
+                        </c:if>   
+                        <c:if test="${not empty sessionScope.acc}">
+                            <a href="login" class="text-white"><small class="text-white ms-2">Log out</small></a>
+                        </c:if>
                     </div>
                 </div>
             </div>
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">Fruitables</h1></a>
+                    <a href="home" class="navbar-brand"><h1 class="text-primary display-6">Food Shop</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.html" class="nav-item nav-link">Home</a>
-                            <a href="shop.html" class="nav-item nav-link">Shop</a>
-                            <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="cart.html" class="dropdown-item active">Cart</a>
-                                    <a href="chackout.html" class="dropdown-item">Chackout</a>
-                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="404.html" class="dropdown-item">404 Page</a>
-                                </div>
-                            </div>
+                            <a href="home" class="nav-item nav-link ">Home</a>
+                            <a href="search" class="nav-item nav-link">Shop</a>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="d-flex m-3 me-0">
-                            <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
-                            <a href="#" class="position-relative me-4 my-auto">
+                            <a href="search" >
+                                <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal"><i class="fas fa-search text-primary"></i></button>
+                            </a>                           
+                            <a href="cart" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
-                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                              
                             </a>
-                            <a href="#" class="my-auto">
+                            <a href="profile" class="my-auto">
                                 <i class="fas fa-user fa-2x"></i>
                             </a>
                         </div>
@@ -134,7 +129,9 @@
         <div class="container-fluid py-5">
             <div class="container py-5">
                 <div class="table-responsive">
+
                     <table class="table">
+
                         <thead>
                             <tr>
                                 <th scope="col">Products</th>
@@ -145,7 +142,9 @@
                                 <th scope="col">Handle</th>
                             </tr>
                         </thead>
+
                         <tbody>
+
                             <c:forEach items = "${cart}" var = "c">
                                 <tr>
                                     <th scope="row">
@@ -160,19 +159,19 @@
                                         <p class="mb-0 mt-4">${c.product_price}</p>
                                     </td>
                                     <td>
-                                       <div class="input-group quantity mt-4" style="width: 100px;">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                                <a href ="cartquantity2?id=${c.product_id}&quan=${c.quantity}"><i class="fa fa-minus"></i></a>
-                                            </button>
+                                        <div class="input-group quantity mt-4" style="width: 100px;">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                                    <a href ="cartquantity2?id=${c.product_id}&quan=${c.quantity}"><i class="fa fa-minus"></i></a>
+                                                </button>
+                                            </div>
+                                            <input type="text" class="form-control form-control-sm text-center border-0" value=${c.quantity}>
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                    <a href ="cartquantity?id=${c.product_id}"><i class="fa fa-plus"></i></a>
+                                                </button>
+                                            </div>
                                         </div>
-                                                <input type="text" class="form-control form-control-sm text-center border-0" value=${c.quantity}>
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                <a href ="cartquantity?id=${c.product_id}"><i class="fa fa-plus"></i></a>
-                                            </button>
-                                        </div>
-                                    </div>
                                     </td>
                                     <td>
                                         <p class="mb-0 mt-4">${c.gettotal()}</p>
@@ -190,22 +189,31 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="mt-5">
-                    <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
-                    <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
-                </div>
+               
+                    <div style="color: red; font-size: 40px; ">${mess}</div>
+                     <div style="color: green; font-size: 40px; ">${mess2}</div>
+               
                 <div class="row g-4 justify-content-end">
                     <div class="col-8"></div>
                     <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
                         <div class="bg-light rounded">
-                            
+
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                 <h5 class="mb-0 ps-4 me-4">Total</h5>
                                 <p class="mb-0 pe-4">${subtotal}</p>
                             </div>
                             <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">
-                                <a href="checkout">Proceed Checkout</a>
+                                <a href="checkout">Direct payment</a>
                             </button>
+                            <form action="vnpay" >
+
+                                <div class="py-3 border-bottom border-top">
+                                    <input type="hidden" name="subtotal" value="${subtotal}">
+                                </div>
+                                <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="submit">
+                                    <a>Payment With VNPay</a>
+                                </button>
+                            </form> 
                         </div>
                     </div>
                 </div>
@@ -221,8 +229,7 @@
                     <div class="row g-4">
                         <div class="col-lg-3">
                             <a href="#">
-                                <h1 class="text-primary mb-0">Fruitables</h1>
-                                <p class="text-secondary mb-0">Fresh products</p>
+                                <h1 class="text-primary mb-0">Food Shop</h1>
                             </a>
                         </div>
                         <div class="col-lg-6">

@@ -62,7 +62,7 @@
                                             <input type="checkbox" name="remember">Remember Me
                                         </label>
                                         <label>
-                                            <a href="#" style="color: blue">Forgotten Password?</a>
+                                            <a href="forget-password" style="color: blue">Forgotten Password?</a>
                                         </label>
                                     </div>
                                     <div class="g-recaptcha" data-sitekey="6LeTQfApAAAAAIG0u1xXfUJHt66INRmu2IxiehDR"></div>

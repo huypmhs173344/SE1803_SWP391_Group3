@@ -187,4 +187,35 @@ public class ProductDAO extends DBContext {
         }
         return result;
     }
+
+    public List<Product> getProductbyCateSort(int category_id, String product_name, String sort) {
+        List<Product> products = new ArrayList<>();
+        String sql = "select * from Products "
+                + "where category_id = ? and product_name like '%"+product_name+"%' "
+                + "order by price ";
+        if(sort.equalsIgnoreCase("desc")){
+            sql += sort;
+        }
+
+        try {
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, category_id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                products.add(this.getProduct(rs));
+            }
+        } catch (SQLException e) {
+
+        }
+        return products;
+    }
+
+    public static void main(String[] args) {
+        ProductDAO db = new ProductDAO();
+        List<Product> products = new ArrayList<>();
+        products = db.getProductbyCateSort(1, "c", "desc");
+        for (Product product : products) {
+            System.out.println(product.getPname());
+        }
+    }
 }

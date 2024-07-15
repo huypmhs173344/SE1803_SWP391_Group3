@@ -91,7 +91,21 @@ public class AccountManagerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        DBContext db = new DBContext();
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        User user = db.getUserById(id);
+
+        int role = Integer.parseInt(request.getParameter("role"));
+        int status = Integer.parseInt(request.getParameter("status"));
+
+        db.updateAccount(new User(id, user.getU_name(),
+                 user.getPass(), user.getF_name(),
+                user.getPhone(), user.getAddr(), role,
+                user.getMail(), status));
+
+        response.sendRedirect("account");
+
     }
 
     /** 

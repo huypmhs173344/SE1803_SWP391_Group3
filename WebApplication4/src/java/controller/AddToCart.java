@@ -61,7 +61,10 @@ public class AddToCart extends HttpServlet {
             throws ServletException, IOException {
         DBCart db = new DBCart();
         HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("acc");        
+        User u = (User) session.getAttribute("acc");   
+        if (u == null) {
+            request.getRequestDispatcher("login").forward(request, response);
+        }
         db.AddToCart(u.getId(), Integer.parseInt(request.getParameter("pid")));
         response.sendRedirect("home");
     }

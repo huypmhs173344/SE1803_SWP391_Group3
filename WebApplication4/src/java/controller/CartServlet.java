@@ -69,6 +69,9 @@ public class CartServlet extends HttpServlet {
         List<Cart> listCart = new ArrayList<>();
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("acc");
+        if (u == null) {
+            request.getRequestDispatcher("login").forward(request, response);
+        }
         listCart = db.getCart(u.getId());
         int subtotal = 0;
         for (Cart cart : listCart) {

@@ -60,6 +60,9 @@ public class ProfileManagerServlet extends HttpServlet {
     throws ServletException, IOException {
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("acc");
+        if (u == null) {
+            request.getRequestDispatcher("login").forward(request, response);
+        }
         int id = u.getId();
         DBContext db = new DBContext();
         User user = db.getUserById(id);

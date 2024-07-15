@@ -1,13 +1,11 @@
 package dal;
 
 import java.util.*;
-import java.lang.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Categories;
 import model.Product;
-import model.Seller;
 
 public class DBHomeContext extends DBContext {
 
@@ -16,7 +14,7 @@ public class DBHomeContext extends DBContext {
         String sql = "select TOP(2) p.product_id,p.product_name,p.category_id,p.price,p.description,p.image_url,p.status from(select product_id,SUM(quantity) as sumquantiny from OrderDetails "
                 + "Group by product_id\n"
                 + ") as sq\n"
-                + "join Products as p on sq.product_id = p.product_id\n"
+                + "join Products as p on sq.product_id = p.product_id\n where status = 'True'"
                 + "order by sq.sumquantiny desc";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -42,7 +40,7 @@ public class DBHomeContext extends DBContext {
         String sql = "select TOP(8) p.product_id,p.product_name,p.category_id,p.price,p.description,p.image_url,p.status from(select product_id,SUM(quantity) as sumquantiny from OrderDetails "
                 + "Group by product_id\n"
                 + ") as sq\n"
-                + "join Products as p on sq.product_id = p.product_id\n"
+                + "join Products as p on sq.product_id = p.product_id\n where status = 'True'"
                 + "order by sq.sumquantiny desc";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -81,7 +79,7 @@ public class DBHomeContext extends DBContext {
         
         public List<Product> getProductByCid(String cid) {
         List<Product> list = new ArrayList<>();
-        String sql = "select * from Products where category_id = ?";
+        String sql = "select * from Products where category_id = ? and status = 'True'";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, cid);
@@ -104,7 +102,7 @@ public class DBHomeContext extends DBContext {
         
         public List<Product> getAllProduct() {
         List<Product> list = new ArrayList<>();
-        String sql = "select * from Products ";
+        String sql = "select * from Products where status = 'True'";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -127,7 +125,7 @@ public class DBHomeContext extends DBContext {
     public static void main(String[] args) {
         DBHomeContext db = new DBHomeContext();
         List<Product> list = new ArrayList<>();
-        list = db.getAllProduct();
+        list = db.top8Seller();
         int i = 0;
         for (Product product : list) {
             i++;

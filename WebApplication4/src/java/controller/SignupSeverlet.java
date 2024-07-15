@@ -80,8 +80,8 @@ public class SignupSeverlet extends HttpServlet {
         String pass = request.getParameter("pass");
         String repass = request.getParameter("repass");
         String phone = request.getParameter("phone");
-        String adrress = request.getParameter("adress");
-        if (pass.isEmpty() || repass.isEmpty() || user.isEmpty() || phone.isEmpty() || adrress.isEmpty()) {
+        String email = request.getParameter("email");
+        if (pass.isEmpty() || repass.isEmpty() || user.isEmpty() || phone.isEmpty() || email.isEmpty()) {
             request.setAttribute("f", "Nhap day du vao");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         }
@@ -95,7 +95,7 @@ public class SignupSeverlet extends HttpServlet {
         }
         if (checkacc(user, pass, repass)) {
             try {
-                db.Signup(user, pass, phone, adrress);
+                db.Signup(user, pass, phone, email);
             } catch (SQLException ex) {
                 Logger.getLogger(SignupSeverlet.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -120,7 +120,7 @@ public class SignupSeverlet extends HttpServlet {
         int t = 0;
         if (user.length() > 2 || user.length() < 30 || pass.length() > 2 || pass.length() < 30) {
             for (int i = 0; i < user.length(); i++) {
-                if (user.toLowerCase().charAt(i) > 'a' && user.toLowerCase().charAt(i) < 'z') {
+                if (user.charAt(i) > 32 && user.charAt(i) < 126) {
                     t = 1;
                     break;
                 }
@@ -130,7 +130,7 @@ public class SignupSeverlet extends HttpServlet {
             }
             t = 0;
             for (int i = 0; i < pass.length(); i++) {
-                if (pass.toLowerCase().charAt(i) > 'a' && pass.toLowerCase().charAt(i) < 'z') {
+                if (user.charAt(i) > 32 && user.charAt(i) < 126) {
                     t = 1;
                     break;
                 }
