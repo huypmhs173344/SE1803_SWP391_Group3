@@ -37,48 +37,7 @@
         <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
         <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
         <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-        <script type="text/javascript">
-            function showPopup() {
-                var popup = document.getElementById("myPopup");
-                popup.style.display = "block";
-            }
-
-            function hidePopup() {
-                var popup = document.getElementById("myPopup");
-                popup.style.display = "none";
-            }
-
-            function submitForm() {
-                document.getElementById("updateForm").submit();
-            }
-        </script>
-        <style>
-            /* Popup container */
-            .popup {
-                display: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 300px;
-                padding: 20px;
-                background-color: white;
-                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-            }
-
-            /* Popup overlay */
-            .overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                z-index: 999;
-            }
-        </style>
+               
 
         <!-- Main CSS-->
         <link href="css/theme.css" rel="stylesheet" media="all">
@@ -193,26 +152,26 @@
                                                 </form>  
                                             </div>
 
-                                            <div class="table-data__tool-right">
+<!--                                            <div class="table-data__tool-right">
                                                 <div class="rs-select2--light rs-select2--sm">
                                                     <select class="js-select2" name="Time" onchange="window.location.href = this.value;" style="width: max-content;">
                                                         <option selected="selected">Time</option>
-                                                        <option value="Sort?id=o&index=1">Old</option>
-                                                        <option value="Sort?id=n&index=1">New</option>
+                                                        <option value="SearchOrder?id=o&index=1">Old</option>
+                                                        <option value="SearchOrder?id=n&index=1">New</option>
                                                     </select>
                                                     <div class="dropDownSelect2"></div>
-                                                </div> </form> 
+                                                </div> 
                                                 <div class="rs-select2--light rs-select2--sm">
                                                     <select class="js-select2" name="Price" onchange="window.location.href = this.value;" style="width: max-content;">
                                                         <option selected="selected">Price</option>
-                                                        <option value="SortByPrice?id=e&index=1">Expensive</option>
-                                                        <option value="SortByPrice?id=c&index=1">Cheapest</option>
+                                                        <option value="SearchOrder?id=e&index=1">Expensive</option>
+                                                        <option value="SearchOrder?id=c&index=1">Cheapest</option>
                                                     </select>
                                                     <div class="dropDownSelect2"></div>
                                                 </div>
-                                                <!--                                                    <button type="submit" class="au-btn-filter" value="Filter">
-                                                                                                        <i class="zmdi zmdi-filter-list"></i>Filter</button>-->
-                                            </div>
+                                                                                                    <button type="submit" class="au-btn-filter" value="Filter">
+                                                                                                        <i class="zmdi zmdi-filter-list"></i>Filter</button>
+                                            </div>-->
 
                                         </div>
                                     </div>
@@ -265,11 +224,12 @@
                                                                         <i class="zmdi zmdi-mail-send"></i>
                                                                     </button>
                                                                 </a>
-                                                                <a href ="updateOrder?order_id=${x.order_id}" >
-                                                                    <button  class="item" data-toggle="tooltip" data-placement="top" title="Update">
+                                                                <a href ="updateOrder?order_id=${x.order_id}&Status=${x.status_id}" >
+                                                                    <button  class="item" data-toggle="tooltip" data-placement="top" title="Update" onclick="showPopup()">
                                                                         <i class="zmdi zmdi-edit"></i>
                                                                     </button>
-                                                                </a>                                                            
+                                                                </a>
+
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -284,7 +244,7 @@
                                 <ul class="pagination">
                                     <ul class="pagination">
                                         <c:forEach begin="1" end="${end}" var="i">
-                                            <li class="page-item active"><a href="Sort?index=${i}&id=${id}" class="page-link">${i}</a></li>
+                                            <li class="page-item active"><a href="table?index=${i}&search=${save}" class="page-link">${i}</a></li>
                                             </c:forEach>                           
 
                                     </ul>
@@ -296,7 +256,7 @@
 
                 </div>
             </div>
-        </div>
+            
 
 
     </div>

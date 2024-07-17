@@ -67,9 +67,18 @@ public class SearchOrder extends HttpServlet {
     throws ServletException, IOException {
         OrderDAO o=new OrderDAO();
         String name= request.getParameter("search");
-        List<OrderShipping> list=o.GetOrdersbyName(name);
-        request.setAttribute("listO", list);
-        request.getRequestDispatcher("table.jsp").forward(request, response);
+        int index=Integer.parseInt(request.getParameter("index"));
+        int count = o.CountOrdersbyName(name);
+        int pagesize = 5;
+        int endpage = count / pagesize;
+        if (count % pagesize != 0) {
+            endpage++;
+        }
+        request.setAttribute("end", endpage);
+        request.setAttribute("save",name );
+        List<OrderShipping> list=o.GetOrdersbyName(name,index);
+        request.setAttribute("listO", list);       
+        request.getRequestDispatcher("Search.jsp").forward(request, response);
     }
 
     /** 

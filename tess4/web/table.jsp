@@ -144,7 +144,7 @@
                                     <div class="table-data__tool">
                                         <div class="table-data__tool-left">
                                             <div class="rs-select2--light rs-select2--md">
-                                                <form class="form-header" action="SearchOrder" method="POST">
+                                                <form class="form-header" action="SearchOrder?index=1" method="POST">
                                                     <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
                                                     <button class="au-btn--submit" type="submit">
                                                         <i class="zmdi zmdi-search"></i>

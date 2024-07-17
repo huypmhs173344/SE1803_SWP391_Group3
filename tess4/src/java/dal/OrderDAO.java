@@ -185,15 +185,20 @@ public class OrderDAO {
         return 0;
     }
 
-    public List<OrderShipping> GetOrdersbyName(String key) {
+    public List<OrderShipping> GetOrdersbyName(String key, int index) {
         List<OrderShipping> list = new ArrayList<>();
-        String query = "Select Orders.*,Shipping.name,Shipping.phone,Shipping.address\n"
-                + "  from Orders join Shipping\n"
-                + "  on Orders.order_id=Shipping.order_id\n"
-                + "  where Shipping.name like ?";
+        String query = "with x as(\n"
+                + "Select Orders.*,Shipping.name,Shipping.phone,Shipping.address,ROW_NUMBER() over(order by Orders.order_id) as r\n"
+                + "from Orders join Shipping\n"
+                + "on Orders.order_id=Shipping.order_id\n"
+                + "where Shipping.name like ?)\n"
+                + "select * from x \n"
+                + "where r between ?*5-4 and ?*5";
         try {
             PreparedStatement st = db.connection.prepareStatement(query);
             st.setString(1, "%" + key + "%");
+            st.setInt(2, index);
+            st.setInt(3, index);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 list.add(new OrderShipping(rs.getInt(1),
@@ -212,6 +217,25 @@ public class OrderDAO {
             System.out.println(e);
         }
         return list;
+    }
+
+    public int CountOrdersbyName(String key) {
+        List<OrderShipping> list = new ArrayList<>();
+        String query = "Select COUNT(*)\n"
+                + "from Orders join Shipping\n"
+                + "on Orders.order_id=Shipping.order_id\n"
+                + "where Shipping.name like ?";
+        try {
+            PreparedStatement st = db.connection.prepareStatement(query);
+            st.setString(1, "%" + key + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
     }
 
     public void deleteOrder(int oid) {
@@ -307,8 +331,7 @@ public class OrderDAO {
 
     public static void main(String[] args) {
         OrderDAO o = new OrderDAO();
-        o.updateOrder(6, 1);
-        OrderShipping order = o.getOrderbyID(6);
-        System.out.println(order);
+        int i = o.CountOrdersbyName("J");
+        System.out.println(i);
     }
 }

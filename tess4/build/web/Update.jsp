@@ -58,18 +58,18 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input class="au-input au-input--full"value="${OrderUpdate.phone}" type="Phone" name="Phone" placeholder="Phone">
+                                        <input class="au-input au-input--full"value="${OrderUpdate.phone}" type="Phone" name="Phone" placeholder="Phone" readonly>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label>Total Money</label>
-                                        <input class="au-input au-input--full"value="${OrderUpdate.total_money}" type="Total Money" name="Total Money" placeholder="Total Money">
+                                        <input class="au-input au-input--full"value="${OrderUpdate.total_money}" type="Total Money" name="Total Money" placeholder="Total Money" readonly>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <input type="radio" name="Status" value="0" ${OrderUpdate.status_id ==0 ?checked:""}>Delivering
-                                        <input type="radio" name="Status" value="1" ${OrderUpdate.status_id ==1 ?checked:""}>Complete
+                                        <input type="radio" name="Status" value="0" ${OrderUpdate.status_id ==0 ?"checked":""}>Delivering
+                                        <input type="radio" name="Status" value="1" ${OrderUpdate.status_id ==1 ?"checked":""}>Complete
                                     </div>
                                     <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Update</button>
                                 </form>

@@ -37,49 +37,6 @@
         <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
         <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
         <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-        <script type="text/javascript">
-            function showPopup() {
-                var popup = document.getElementById("myPopup");
-                popup.style.display = "block";
-            }
-
-            function hidePopup() {
-                var popup = document.getElementById("myPopup");
-                popup.style.display = "none";
-            }
-
-            function submitForm() {
-                document.getElementById("updateForm").submit();
-            }
-        </script>
-        <style>
-            /* Popup container */
-            .popup {
-                display: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 300px;
-                padding: 20px;
-                background-color: white;
-                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-            }
-
-            /* Popup overlay */
-            .overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                z-index: 999;
-            }
-        </style>
-
         <!-- Main CSS-->
         <link href="css/theme.css" rel="stylesheet" media="all">
 
@@ -185,7 +142,7 @@
                                     <div class="table-data__tool">
                                         <div class="table-data__tool-left">
                                             <div class="rs-select2--light rs-select2--md">
-                                                <form class="form-header" action="SearchOrder" method="POST">
+                                                <form class="form-header" action="SearchOrder?index=1" method="POST">
                                                     <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
                                                     <button class="au-btn--submit" type="submit">
                                                         <i class="zmdi zmdi-search"></i>

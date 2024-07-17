@@ -69,11 +69,8 @@ public class UserServlet extends HttpServlet {
             endpage++;
         }
         request.setAttribute("end", endpage);
-        List<OrderShipping> list=odao.getAllOrder1(2);
+        List<OrderShipping> list=odao.getAllOrder1(1);
         request.setAttribute("listO", list);
-        dal.UserDAO udao=new UserDAO();
-        List<User> list1=udao.getAllUser();
-        request.setAttribute("listU", list1);
         request.getRequestDispatcher("table.jsp").forward(request, response);
     } 
 
