@@ -5,10 +5,6 @@
 package model;
 
 
-
-import java.util.*;
-import java.lang.*;
-
 public class User {
     int id;
     String u_name;
@@ -104,6 +100,11 @@ public class User {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", u_name=" + u_name + ", pass=" + pass + ", f_name=" + f_name + ", phone=" + phone + ", addr=" + addr + ", role=" + role + ", mail=" + mail + ", status=" + status + '}';
     }
     
 }

@@ -1,7 +1,6 @@
 package dal;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,35 +17,21 @@ public class DBContext {
 
     protected Connection connection;
 
-    public Connection getConnection()throws Exception {        
-        String url = "jdbc:sqlserver://"+serverName+":"+portNumber +
-                ";databaseName="+dbName;//+"; integratedSecurity=true";
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");         
-        return DriverManager.getConnection(url, userID, password);
-//        return DriverManager.getConnection(url);
-    }
-    public DBContext(){
-        
-    }
-    public DBContext(String u, String p){
-        userID = u;
-        password = p;
-    }
-    /*Insert your other code right after this comment*/
-   
-    /*Change/update information of your database connection, DO NOT change name of instance variables in this class*/
-    private final String serverName = "localhost";
-    private final String dbName = "FoodShop";
-    private final String portNumber = "1433";
-    private  String userID = "sa";
-    private  String password = "12345";
-    
-    public static void main(String[] args){
-        try{
-            new DBContext().getConnection();
-            System.out.println("Ket noi thanh cong");
-        } catch(Exception e){
-            System.out.println("Ket noi that bai"+e.getLocalizedMessage()+" "+e.getMessage());
+    public DBContext() {
+        //@Students: You are allowed to edit user, pass, url variables to fit 
+        //your system configuration
+        //You can also add more methods for Database Interaction tasks. 
+        //But we recommend you to do it in another class
+        // For example : StudentDBContext extends DBContext , 
+        //where StudentDBContext is located in dal package, 
+        try {
+            String user = "sa";
+            String pass = "123";
+            String url = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=FoodShop";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(url, user, pass);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -135,26 +120,5 @@ public class DBContext {
         } catch (SQLException e) {
 
         }
-    }
-
-    public List<Product> getNewProduct() {
-        List<Product> list = new ArrayList<>();
-        String sql = "select * from Products where product_id < 5 ";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();           
-            while (rs.next()) {
-                Product p = new Product(
-                        rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getString(5),
-                        rs.getString(6));
-                list.add(p);
-            }
-        } catch (Exception e) {
-        }
-        return list;
     }
 }

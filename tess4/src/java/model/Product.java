@@ -1,29 +1,46 @@
 package model;
 
-import java.util.*;
-import java.lang.*;
 
 public class Product {
 
-    int pid;
-    String pname;
-    int cid;
-    int price;
-    String pdes;
-    String image;
+    private int pid;
+    private String pname;
+    private int cid;
+    private int price;
+    private String pdes;
+    private String image;
+    private String status;
 
     public Product() {
     }
 
-    public Product(int pid, String pname, int cid, int price, String pdes, String image) {
+    public Product(int pid, String pname, String image, int price) {
+        this.pid = pid;
+        this.pname = pname;
+        this.price = price;       
+        this.image = image;
+    }
+
+    
+
+    public Product(int pid, String pname, int cid, int price, String pdes, String image, String status) {
         this.pid = pid;
         this.pname = pname;
         this.cid = cid;
         this.price = price;
         this.pdes = pdes;
         this.image = image;
+        this.status = status;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
     public int getPid() {
         return pid;
     }
@@ -71,5 +88,7 @@ public class Product {
     public void setImage(String image) {
         this.image = image;
     }
+
+    
     
 }

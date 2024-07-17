@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.OrderDAO;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import model.Order;
+import model.OrderShipping;
+import model.Product;
 import model.User;
 
 /**
@@ -56,9 +60,20 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        dal.UserDAO odao=new UserDAO();
-        List<User> list=odao.getAllUser();
-        request.setAttribute("listU", list);
+        dal.OrderDAO odao=new OrderDAO();
+//        int index=Integer.parseInt(request.getParameter("index"));
+        int count = odao.CountOrders();
+        int pagesize = 5;
+        int endpage = count / pagesize;
+        if (count % pagesize != 0) {
+            endpage++;
+        }
+        request.setAttribute("end", endpage);
+        List<OrderShipping> list=odao.getAllOrder1(2);
+        request.setAttribute("listO", list);
+        dal.UserDAO udao=new UserDAO();
+        List<User> list1=udao.getAllUser();
+        request.setAttribute("listU", list1);
         request.getRequestDispatcher("table.jsp").forward(request, response);
     } 
 
@@ -72,7 +87,7 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /** 

@@ -3,24 +3,41 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SWP391/tess4/web/tab.html</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/SortByPrice.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/OrderHistory.java</file>
             <file>file:/D:/SWP391/tess4/src/java/dal/OrderDAO.java</file>
-            <file>file:/D:/SWP391/tess4/web/inbox.html</file>
-            <file>file:/D:/SWP391/tess4/src/java/controller/UserServlet.java</file>
-            <file>file:/D:/SWP391/tess4/web/badge.html</file>
-            <file>file:/D:/SWP391/tess4/src/java/controller/SignupSeverlet.java</file>
-            <file>file:/D:/SWP391/tess4/src/java/model/Product.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/SortOrder.java</file>
+            <file>file:/D:/SWP391/tess4/web/css/bootstrap_ver1.min.css</file>
+            <file>file:/D:/SWP391/tess4/web/js/bootstrap-datetimepicker.js</file>
             <file>file:/D:/SWP391/tess4/src/java/dal/DBContext.java</file>
-            <file>file:/D:/SWP391/tess4/web/table.jsp</file>
-            <file>file:/D:/SWP391/tess4/src/java/controller/LoginSeverlet.java</file>
-            <file>file:/D:/SWP391/tess4/src/java/controller/HomeSeverlet.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/model/Product.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/dal/OrderDetailDao.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/model/ProductDetail.java</file>
             <file>file:/D:/SWP391/tess4/src/java/model/Categories.java</file>
+            <file>file:/D:/SWP391/tess4/web/orderDetails.jsp</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/OrderDetail.java</file>
+            <file>file:/D:/SWP391/tess4/web/css/theme.css</file>
+            <file>file:/D:/SWP391/tess4/web/css/font-face.css</file>
+            <file>file:/D:/SWP391/tess4/web/js/moment.js</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/SearchOrder.java</file>
+            <file>file:/D:/SWP391/tess4/web/OrderHistory.jsp</file>
+            <file>file:/D:/SWP391/tess4/web/css/bootstrap-datetimepicker.min.css</file>
+            <file>file:/D:/SWP391/tess4/web/css/bootstrap.min.css</file>
+            <file>file:/D:/SWP391/tess4/web/Update.jsp</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/UserServlet.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/model/OrderShipping.java</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/updateOrder.java</file>
+            <file>file:/D:/SWP391/tess4/web/table.jsp</file>
+            <file>file:/D:/SWP391/tess4/src/java/controller/OrderDetail2.java</file>
+            <file>file:/D:/SWP391/tess4/web/orderDetails_1.jsp</file>
             <file>file:/D:/SWP391/tess4/src/java/dal/UserDAO.java</file>
             <file>file:/D:/SWP391/tess4/web/WEB-INF/web.xml</file>
+            <file>file:/D:/SWP391/tess4/web/js/main.js</file>
+            <file>file:/D:/SWP391/tess4/web/SortByTime.jsp</file>
             <file>file:/D:/SWP391/tess4/src/java/model/Order.java</file>
+            <file>file:/D:/SWP391/tess4/web/META-INF/context.xml</file>
+            <file>file:/D:/SWP391/tess4/web/SortByPrice.jsp</file>
             <file>file:/D:/SWP391/tess4/src/java/model/User.java</file>
-            <file>file:/D:/SWP391/tess4/src/java/controller/OrdersSeverlet.java</file>
-            <file>file:/D:/SWP391/tess4/web/index.html</file>
         </group>
     </open-files>
 </project-private>
